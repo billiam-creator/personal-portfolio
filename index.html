@@ -1,209 +1,160 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Personal Portfolio</title>
-        <link rel="stylesheet" href="style.css">
-        <script src="https://kit.fontawesome.com/393f0f359b.js" crossorigin="anonymous"></script>
-    </head>
-    <body>
-        <div id="header">
-            <div class="container">
-                <nav>
-                    <p class="logo"><span>B</span>illiam.</p>
-                    <ul id="sidemenu">
-                        <li><a href="#header">Home</a></li>
-                        <li><a href="#about">About</a></li>
-                        <li><a href="#services">Services</a></li>
-                        <li><a href="#portfolio">Portfolio</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                        
-                        <i class="fa-solid fa-xmark" onclick="closemenu()"></i>
-                       
-                    </ul>
-                    
-                    <i class="fa-solid fa-bars" onclick="openmenu()"></i>
-                  
-                </nav>
-                <div class="header-text">
-                    <p>Software Developer</p>
-                    <h1>Hi, I'm <span>George</span><br> William from Kenya</h1>
-                </div>
-            </div>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>George Bush – Mobile Developer (Flutter) in Nairobi</title>
+<meta name="description" content="Junior mobile developer shipping Flutter apps to Google Play and the App Store. Based in Nairobi, Kenya.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#EEF2F0;--ink:#10201C;--muted:#4C5E58;--line:#C9D5D0;--accent:#0B7A5C;--accent-ink:#fff;--panel:#E1E9E5}
+@media (prefers-color-scheme:dark){:root{--bg:#0F1A17;--ink:#E7EFEB;--muted:#9BB0A8;--line:#26382F;--accent:#3FCB9D;--accent-ink:#06201A;--panel:#162520}}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font:400 17px/1.6 "IBM Plex Sans",system-ui,sans-serif}
+h1,h2,h3{font-family:"Bricolage Grotesque",system-ui,sans-serif;line-height:1.1;letter-spacing:-.02em}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.wrap{max-width:960px;margin:0 auto;padding:0 24px}
+header.top{display:flex;justify-content:space-between;align-items:center;padding:22px 0;gap:16px;flex-wrap:wrap}
+.brand{font-family:"Bricolage Grotesque",sans-serif;font-weight:700;font-size:20px;text-decoration:none}
+nav a{margin-left:20px;text-decoration:none;color:var(--muted);font-size:15px}
+nav a:hover{color:var(--ink)}
+.hero{padding:64px 0 48px}
+.hero h1{font-size:clamp(38px,7vw,72px);font-weight:700;max-width:16ch}
+.hero p.lead{margin-top:24px;max-width:58ch;font-size:19px;color:var(--muted)}
+.cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:32px}
+.btn{display:inline-block;padding:12px 22px;border-radius:8px;font-weight:500;text-decoration:none;border:2px solid var(--accent)}
+.btn.primary{background:var(--accent);color:var(--accent-ink)}
+.btn.ghost{color:var(--ink);border-color:var(--line)}
+.btn:hover{border-color:var(--ink)}
+.pipe{display:grid;grid-template-columns:repeat(4,1fr);margin-top:56px;border-top:2px solid var(--ink)}
+.pipe div{padding:16px 16px 0 0}
+.pipe b{font-family:"Bricolage Grotesque",sans-serif;font-size:20px;display:block}
+.pipe span{font-size:14px;color:var(--muted)}
+section{padding:56px 0;border-top:1px solid var(--line)}
+section>.wrap>h2{font-size:clamp(28px,4vw,40px);margin-bottom:28px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.case{grid-column:1/-1;background:var(--panel);padding:28px;border-radius:12px}
+.case h3{font-size:28px;margin-bottom:6px}
+.case ul{margin:16px 0 0 20px}
+.case li{margin-bottom:8px;max-width:70ch}
+.tags{margin-top:16px;font-size:14px;color:var(--muted)}
+.app{padding:20px 0;border-top:1px solid var(--line)}
+.app h3{font-size:22px;margin-bottom:6px}
+.app p{color:var(--muted);font-size:16px}
+.job{display:grid;grid-template-columns:170px 1fr;gap:8px 28px;padding:22px 0;border-top:1px solid var(--line)}
+.job:first-of-type{border-top:0}
+.when{color:var(--muted);font-size:15px}
+.job h3{font-size:21px}
+.job .org{color:var(--muted);margin-bottom:8px}
+.job ul{margin-left:20px}
+.job li{margin-bottom:6px;max-width:66ch}
+dl.skills{display:grid;grid-template-columns:170px 1fr;gap:14px 28px}
+dt{font-weight:500}
+dd{color:var(--muted)}
+.contact p{max-width:56ch;color:var(--muted);margin-bottom:22px}
+footer{padding:32px 0 56px;color:var(--muted);font-size:14px;border-top:1px solid var(--line)}
+@media(max-width:700px){.grid,.job,dl.skills{grid-template-columns:1fr}.pipe{grid-template-columns:1fr 1fr;row-gap:12px}nav a:first-child{margin-left:0}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="top">
+  <a class="brand" href="#top">George Bush</a>
+  <nav aria-label="Main"><a href="#work">Work</a><a href="#experience">Experience</a><a href="#skills">Skills</a><a href="#contact">Contact</a></nav>
+</header>
 
-        </div>
+<main id="top">
+<div class="hero">
+  <h1>I ship Flutter apps to Google Play and the App Store.</h1>
+  <p class="lead">I’m Odhiambo George William Bush, a junior mobile developer in Nairobi. At Brainverse Technologies I maintain four live apps and handle their Android and iOS releases, from build to store submission.</p>
+  <div class="cta">
+    <a class="btn primary" href="my_cv.pdf" download>Download CV</a>
+    <a class="btn ghost" href="mailto:bushg5200@gmail.com">Email me</a>
+  </div>
+  <div class="pipe" aria-label="My release process">
+    <div><b>Build</b><span>Flutter, AAB and IPA files</span></div>
+    <div><b>Sign</b><span>Android and iOS code signing</span></div>
+    <div><b>Submit</b><span>Play Console and App Store</span></div>
+    <div><b>Live</b><span>Users get the update</span></div>
+  </div>
+</div>
+</main>
 
-                    <!-------about------->
+<section id="work">
+<div class="wrap" style="padding:0">
+  <h2>Work</h2>
+  <div class="grid">
+    <article class="case">
+      <h3>Conferena ticket scanner</h3>
+      <p>Live on Google Play and the App Store. Event organisers scan attendee QR codes to validate tickets and watch booking counts in real time.</p>
+      <ul>
+        <li>Built the Flutter app against a live CodeIgniter REST backend and published it on both stores.</li>
+        <li>Fixed an auth bug where standard Bearer tokens returned empty data. I traced the browser’s session flow in DevTools and added session-cookie auth alongside the token, with auto re-login and secure credential storage.</li>
+        <li>Handled the full release: Android signing, AAB build, Play Store submission, iOS IPA build and App Store deployment.</li>
+      </ul>
+      <p class="tags">Flutter, Dart, REST APIs, CodeIgniter, Android, iOS</p>
+    </article>
+    <div class="app"><h3>Paulines Africa</h3><p>Live app I maintain: bug fixes, updates and stability across devices and OS versions.</p></div>
+    <div class="app"><h3>Waridi</h3><p>Live app I maintain: bug fixes, updates and stability across devices and OS versions.</p></div>
+    <div class="app"><h3>Ping Robot</h3><p>Live app I maintain: bug fixes, updates and stability across devices and OS versions.</p></div>
+    <div class="app"><h3>Inventory and sales system</h3><p>Full-stack project in React, Node.js and MySQL, with a REST API, role-based access and login. <a href="https://github.com/billiam-creator">See the code on GitHub</a>.</p></div>
+  </div>
+</div>
+</section>
 
-        <div id="about">
-            <div class="container">
-                <div class="row">
-                    <div class="about-col-1">
-                   <img src="images/us.jpg"/>
-                    </div>
-                    <div class="about-col-2">
-                    <h1 class="subtitle">About me</h1>
-                    <p>My name is George William Bush.I am a software developer at Institute of Software Technologies. I am very eenthusiastic in this field which I have to mention, I was introduced to it by a relative. I have a passion in this sector and for the short period I have been in it, I can note that I have gained several skills. I also have other hobbies like playing video games and reading. I am a hardworker and got a drive for implementing ideas. Currently a student taking Diploma in Full-Stack Development.</p>
+<section id="experience">
+<div class="wrap" style="padding:0">
+  <h2>Experience</h2>
+  <div class="job"><div class="when">Feb 2026 – now</div><div>
+    <h3>Junior Mobile Developer (internship)</h3><p class="org">Brainverse Technologies, remote</p>
+    <ul>
+      <li>Maintain and add features to four live Android and iOS apps.</li>
+      <li>Own the release cycle: builds, signing, and submissions to Google Play and the App Store.</li>
+      <li>Debug production issues and fix the root cause, then profile for speed and memory.</li>
+      <li>Work with the team on code reviews and sprints, and on a new app currently in development.</li>
+    </ul></div></div>
+  <div class="job"><div class="when">Feb 2026 – now</div><div>
+    <h3>Co-founder and operations manager</h3><p class="org">Spik n Span Vacuum Cleaning Services, Nairobi</p>
+    <ul>
+      <li>Run a cleaning business from first enquiry to quote, job and follow-up.</li>
+      <li>Win customers through Facebook, TikTok and word of mouth, and handle budgeting, supplies and staff pay.</li>
+    </ul></div></div>
+  <div class="job"><div class="when">Feb 2024 – Jun 2025</div><div>
+    <h3>Software developer</h3><p class="org">Pioneer Outsourcing (Believersolvo Call Center)</p>
+    <ul><li>Designed, built and maintained the company website in HTML, CSS and JavaScript, using Git for version control.</li></ul></div></div>
+  <div class="job"><div class="when">Education</div><div>
+    <h3>Diploma in Full Stack Development</h3><p class="org">Institute of Software Technologies, 2024 – 2025. Certificate in Software Development, 2023 – 2024.</p></div></div>
+</div>
+</section>
 
-                    <div class="tab-titles">
-                        <p class="tab-links active-link" onclick="opentab('skills')">Skills</p>
-                        <p class="tab-links"onclick="opentab('experience')">Experience</p>
-                        <p class="tab-links"onclick="opentab('education')">Education</p>
-                    </div>
-                    <div class="tab-contents active-tab" id="skills">
-                        <ul>
-                       <li><span>UI/UX</span><br>Designing web/app interfaces</li>
-                       <li><span>Web Development</span><br>Web app development</li>
-                       <li><span>App Development</span><br>Building android/iOS apps</li>
-                        </ul>
-                    </div>
-                    <div class="tab-contents" id="experience">
-                        <ul>
-                            <li><span>Feb 2026-currently</span><br>Mobile Developer Intern at Brainverse</li>
-                       <li><span>March 2024-2025</span><br>Manager at Xtreme Gamers</li>
-                       
-                       <li><span>2022-2023</span><br>UI/UX Design Junior Developer at IST</li>
-                    
-                        </ul>
-                    </div>
-                    <div class="tab-contents" id="education">
-                        <ul>
-                            <li><span>Sep 2024-Sep 2025</span><br>Diploma in Full-Stack Development at IST </li>
-                       <li><span>Sep 2023- Jan2024</span><br>Certificate in Software Development at IST</li>
-                       <li><span>2019-2022</span><br>KCSE at Maranda High School</li>
-                       
-                        </ul>
-                    </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+<section id="skills">
+<div class="wrap" style="padding:0">
+  <h2>Skills</h2>
+  <dl class="skills">
+    <dt>Mobile</dt><dd>Flutter, Dart, Android Studio, Google Play Console, App Store releases, AAB/IPA builds</dd>
+    <dt>Backend and data</dt><dd>REST APIs, Node.js, Express, PHP (Laravel), MySQL, Firebase</dd>
+    <dt>Web</dt><dd>React, JavaScript, HTML, CSS</dd>
+    <dt>Tools</dt><dd>Git, GitHub, code review, agile sprints</dd>
+  </dl>
+</div>
+</section>
 
-        <!----------services--------->
-        
-        <div id="services">
-            <div class="container">
-                <h1 class="sub-title">My Services</h1>
-                <div class="services-list">
-                    <div>
-                        <i class="fa-solid fa-code"></i>
-                        <h2>Web Design</h2>
-                        <p>I am a passionate web designer with a strong skill set in creating visually appealing, user-friendly, and responsive websites. With expertise in HTML, CSS, and JavaScript, I craft seamless digital experiences that are both functional and aesthetically engaging</p>
-                        <a href="#">Learn more</a>
-                </div>
-                <div>
-                    <i class="fa-solid fa-crop"></i>
-                    <h2>UI/UX Design</h2>
-                    <p>I am a UI/UX designer and web developer dedicated to crafting seamless digital experiences. With a deep understanding of user interface (UI) and user experience (UX) design principles, I create intuitive, visually engaging, and user-friendly interfaces.</p>
-                    <a href="#">Learn more</a>
-            </div>
-            <div>
-                <i class="fa-brands fa-app-store"></i>
-                <h2>App Development</h2>
-                <p>As a web developer, I bring designs to life with HTML, CSS, JavaScript, and modern frameworks to build functional, responsive, and high-performance websites. I have experience with front-end and back-end development, ensuring smooth interactions, optimized performance, and cross-device compatibility.</p>
-                <a href="#">Learn more</a>
-        </div>
-
-
-                </div>
-
-            </div>
-        </div>
-        <!----------portfpolio------------>
-        <div id="portfolio">
-            <div class="container">
-                <h1 class="sub-titles">My Work</h1>
-                <div class="work-list">
-                    <div class="work">
-                        <img src="images/work-1.png"/>
-                        <div class="layer">
-                            <h3>Social Media App</h3>
-                            <p>The app connects you to the talented people around the world.
-                                Download available on Playstore</p>
-                                <a href="#"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-
-                        </div>
-                    </div>
-                    <div class="work">
-                        <img src="images/work-2.png"/>
-                        <div class="layer">
-                            <h3>Music App</h3>
-                            <p>The app connects you to the talented people around the world.
-                                Download available on Playstore</p>
-                                <a href="#"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-
-                        </div>
-                    </div>
-                    <div class="work">
-                        <img src="images/work-3.png"/><div class="layer">
-                            <h3>Online Shopping App</h3>
-                            <p>The app connects you to the talented people around the world.
-                                Download available on Playstore</p>
-                                <a href="#"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-
-                        </div>
-                    </div>
-                </div>
-                <a href="#" class="btn">See More</a>
-            </div>
-        </div>
-        <!--------contact info--------->
-        <div id="contact">
-            <div class="container">
-                <div class="row">
-                    <div class="contact-left">
-                        <h1 class="sub-title">Contact Me</h1>
-                        <p><i class="fa-solid fa-paper-plane"></i>bushg5200@gmail.com</p>
-                        <p><i class="fa-brands fa-whatsapp"></i>+254 111673345</p>
-                        <div class="social-icons">
-                            <a href="https://facebook.com/"><i class="fa-brands fa-facebook"></i></a>
-                            <a href="https://linkedin.com/"><i class="fa-brands fa-linkedin"></i></a>
-                            <a href="https:/instagram.com/"><i class="fa-brands fa-instagram"></i></a>
-                            <a href="https:/x.com/"><i class="fa-brands fa-twitter"></i></a>
-                        </div>
-                        <a href="images/my cv.pdf" download class="btn btn2">Download CV</a>
-                    </div>
-                    <div class="contact-right">
-                        <form>
-                            <input type="text" name="Name" placeholder="Your Name" required>
-                            <input type="email" name="email" placeholder="Your Email" required>
-                            <textarea name="Message" rows="6" placeholder="Enter Message"></textarea>
-                            <button type="submit" class="btn btn2">Submit</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-            <div class="copyright">
-                <p>Copyright &copy; George. Made by Billiam Coding</p>
-            </div>
-        </div>
-<script>
-    var tablinks =document.getElementsByClassName("tab-links")
-    var tabcontents =document.getElementsByClassName("tab-contents")
-
-    function opentab(tabname){
-        for(tablink of tablinks){
-            tablink.classList.remove("active-link");
-        }
-        for(tabcontent of tabcontents){
-            tabcontent.classList.remove("active-tab");
-        }
-        event.currentTarget.classList.add("active-link");
-        document.getElementById(tabname).classList.add("active-tab");
-
-       
-    }
-</script>
-<script>
-    var sidemenu = document.getElementById("sidemenu")
-    function openmenu(){
-        sidemenu.style.right = "0";
-    }
-    function closemenu(){
-        sidemenu.style.right = "-200px"
-    }
-</script>
-    </body>
+<section id="contact" class="contact">
+<div class="wrap" style="padding:0">
+  <h2>Let’s talk</h2>
+  <p>I’m looking for a mobile developer role where I can take on more responsibility. The quickest way to reach me is email or WhatsApp.</p>
+  <div class="cta" style="margin-top:0">
+    <a class="btn primary" href="mailto:bushg5200@gmail.com">bushg5200@gmail.com</a>
+    <a class="btn ghost" href="https://wa.me/254111673345">WhatsApp</a>
+    <a class="btn ghost" href="https://github.com/billiam-creator">GitHub</a>
+  </div>
+</div>
+</section>
+</div>
+<footer><div class="wrap">© 2026 Odhiambo George William Bush. Nairobi, Kenya.</div></footer>
+</body>
 </html>
